@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Main {
     static String inputNum;
-    static NumberSystems mainSystems;
+    static int mainSystems;
     static BinarySystem binarySystem = new BinarySystem();
     static OctalSystem octalSystem = new OctalSystem();
     static DecimalSystem decimalSystem = new DecimalSystem();
@@ -18,6 +18,6 @@ public class Main {
     }
     public static void main(String[] args) {
         setList();
-
+        System.out.print(binarySystem.opDivide("0", "0111"));
     }
 }
