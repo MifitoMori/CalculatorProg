@@ -4,36 +4,37 @@ import java.math.RoundingMode;
 public class DecimalSystem extends NumberSystems{
     private static final int radix = 10;
 
-    public String GetValueNumSys(String num, int Sustems){
+    public static String GetValueNumSys(String num, int Sustems){
         return Integer.toString(GetDecimalForm(num, Sustems), radix); // Для других систем
     }
     public boolean isValidNumber(String num){
-        return isValidAllNum(num, radix);
+        return isValidAllNum(num, 1, radix)=="валидный"?true:false;
     }
 
     // Сложение двух десятичных чисел (вход и выход — строки)
-    public String opAdd(String num1, String num2) {
+    @Override
+    public  String opAdd(String num1, String num2) {
         BigDecimal decimal1 = new BigDecimal(num1);
         BigDecimal decimal2 = new BigDecimal(num2);
         return decimal1.add(decimal2).toString();
     }
 
     // Вычитание двух десятичных чисел (вход и выход — строки)
-    public String opSubtract(String num1, String num2) {
+    public static String opSubtract(String num1, String num2) {
         BigDecimal decimal1 = new BigDecimal(num1);
         BigDecimal decimal2 = new BigDecimal(num2);
         return decimal1.subtract(decimal2).toString();
     }
 
     // Умножение двух десятичных чисел (вход и выход — строки)
-    public String opMultiply(String num1, String num2) {
+    public static String opMultiply(String num1, String num2) {
         BigDecimal decimal1 = new BigDecimal(num1);
         BigDecimal decimal2 = new BigDecimal(num2);
         return decimal1.multiply(decimal2).toString();
     }
 
     // Деление двух десятичных чисел (вход и выход — строки)
-    public String opDivide(String num1, String num2) {
+    public static String opDivide(String num1, String num2) {
         BigDecimal decimal1 = new BigDecimal(num1);
         BigDecimal decimal2 = new BigDecimal(num2);
 
@@ -45,6 +46,4 @@ public class DecimalSystem extends NumberSystems{
         int scale = decimal1.scale() + decimal2.scale();
         return decimal1.divide(decimal2, scale, RoundingMode.HALF_UP).toString();
     }
-
-
 }
