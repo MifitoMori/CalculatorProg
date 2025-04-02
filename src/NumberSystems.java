@@ -4,24 +4,15 @@ import java.math.RoundingMode;
 
 abstract class NumberSystems { //Система счисления
 
-    static String GetValueNumSys(String num, int Systems){
+    String GetValueNumSys(String num, int Systems){
         return null;
     };//преобразование числа в свою систему счисления
-    abstract boolean isValidNumber(String num);//проверка значений
+    abstract boolean isValidSystem(int numSystems);//проверка значений
 
-    String opAdd(String numA, String numB) {
-        return null;
-    }
-
-    static String opSubtract(String numA,String numB ) {
-        return null;
-    }
-    static String opMultiply(String numA,String numB ) {
-        return null;
-    }
-    static String opDivide(String numA,String numB ) {
-        return null;
-    }
+    protected String opAdd(String numA, String numB) {return null;}
+    protected String opSubtract(String numA,String numB ) {return null;}
+    protected String opMultiply(String numA,String numB ) {return null;}
+    protected String opDivide(String numA,String numB ) {return null;}
 
     protected static int GetDecimalForm(String num, int radix)
     {
@@ -90,7 +81,10 @@ abstract class NumberSystems { //Система счисления
             return "Invalid expression";
         switch (arg[1]){
             case "+": return opAdd(arg[0], arg[2]);
+            case "-": return opSubtract(arg[0], arg[2]);
+            case "/": return opDivide(arg[0], arg[2]);
+            case "*": return opMultiply(arg[0], arg[2]);
         }
-        return "0";
+        return "В пользовательской программе данной операции не существует";
     }
 }
